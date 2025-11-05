@@ -40,16 +40,8 @@ jobs:
         with:
           version: 'latest'
 
-      - name: Setup kubeconfig
-        run: |
-          echo "${{ secrets.KUBECONFIG_DATA }}" | base64 --decode > kubeconfig
-          export KUBECONFIG=$PWD/kubeconfig
-          kubectl config get-contexts
-          kubectl cluster-info
-
       - name: Deploy to Kubernetes
         run: |
-          export KUBECONFIG=$PWD/kubeconfig
           kubectl apply -f deployment.yaml
           kubectl apply -f service.yaml
           kubectl get pods -o wide
