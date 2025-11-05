@@ -1,5 +1,5 @@
 const http = require('http');
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 const metricsCount = { requests: 0 };
 http.createServer((req, res) => {
   if (req.url === '/metrics') {
