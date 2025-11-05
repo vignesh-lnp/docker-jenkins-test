@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker { 
-            image 'node:20-alpine'  // Node.js + npm pre-installed
-            args '-v /var/run/docker.sock:/var/run/docker.sock' // allow Docker commands
-        }
-    }
+    agent any
 
     stages {
         stage('Clone Repository') {
@@ -28,8 +23,8 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 sh '''
-                    docker stop docker-jenkins-demo || true
-                    docker rm docker-jenkins-demo || true
+                    docker stop docker-jenkins-demo
+                    docker rm docker-jenkins-demo
                     docker run -d --name docker-jenkins-demo -p 4000:3000 docker-jenkins-demo
                 '''
             }
