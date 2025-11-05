@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker { 
-            image 'node:20-alpine'  
-            args '-v /var/run/docker.sock:/var/run/docker.sock' 
+            image 'node:20-alpine'  // Node.js + npm pre-installed
+            args '-v /var/run/docker.sock:/var/run/docker.sock' // allow Docker commands
         }
     }
 
