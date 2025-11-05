@@ -25,7 +25,7 @@ pipeline {
                 sh '''
                     docker stop docker-jenkins-demo || true
                     docker rm docker-jenkins-demo || true
-                    docker run -d --name docker-jenkins-demo -p 3000:3000 docker-jenkins-demo
+                    docker run -d --name docker-jenkins-demo -p 4000:3000 docker-jenkins-demo
                 '''
             }
         }
